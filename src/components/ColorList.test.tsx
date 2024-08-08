@@ -57,3 +57,17 @@ test("getAllBy,queryAllBy,findAllBy", async () => {
 
   expect(await screen.findAllByRole("listitem")).toHaveLength(3);
 });
+
+test("favor using getBy to prove an element exists", async () => {
+  render(<ColorList />);
+
+  const element = screen.getByRole("list");
+  expect(element).toBeInTheDocument();
+});
+
+test("favor queryBy when proving an element does not exist", async () => {
+  render(<ColorList />);
+
+  const element = screen.queryByRole("text");
+  expect(element).not.toBeInTheDocument();
+});
