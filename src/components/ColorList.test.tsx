@@ -21,3 +21,12 @@ test("getBy,queryBy,findBy,finding 0 elements", async () => {
 
   expect(errorThrown).toEqual(true);
 });
+
+test("getBy,queryBy,findBy,when they find 1 element", async () => {
+  render(<ColorList />);
+
+  expect(screen.getByRole("list")).toBeInTheDocument();
+  expect(screen.queryByRole("list")).toBeInTheDocument();
+  expect(await screen.findByRole("list")).toBeInTheDocument();
+});
+
